@@ -19,7 +19,7 @@ var position = document.getElementById('content');
 for(var i = 0; i < array.length; i++){
 	array[i] = calculateSTI(array[i]);
  	newEl = document.createElement('li');
-	newText = document.createTextNode(array[i][0] + ",    percent STI    " + array[i][1] + "     " + array[i][2] + "     " + array[i][3]);
+	newText = document.createTextNode(array[i][0] + ", percent STI " + array[i][1] + "%    $" + array[i][2] + "   $" + array[i][3]);
 	newEl.appendChild(newText);
 	position.appendChild(newEl);
 }
@@ -40,9 +40,8 @@ function calculateSTI(array1) {
 
   newArray[1] = bonus;
   //changed line 43 used math.round.
-  newArray[2] = Math.round(baseSalary * (1.0 + bonus), -1);
-  //needed to remove the * bonus from the result because I changed the input to newArray[2]
-  newArray[3] = Math.round(newArray[2]);
+  newArray[2] = parseInt(baseSalary * (1.0 + bonus));
+  newArray[3] = Math.round(baseSalary * bonus);
   console.log(newArray[0] + " " + newArray[1] + " " + newArray[2] + " " + newArray[3]);
 
   return newArray;
